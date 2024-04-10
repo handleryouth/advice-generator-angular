@@ -1,0 +1,34 @@
+<div class="min-h-screen bg-darkBlue flex justify-center items-center">
+  <div class="w-72 bg-darkGrayishBlue mx-4 rounded-md p-5 text-center relative">
+    <ng-container
+      *ngIf="isLoading; then loadingContainer; else adviceContainer"
+    >
+    </ng-container>
+
+    <ng-template #adviceContainer>
+      <p class="my-0 text-neonGreen">Advice # {{ advicesData?.slip?.id }}</p>
+
+      <p class="text-lightCyan">
+        {{ advicesData?.slip?.advice }}
+      </p>
+    </ng-template>
+
+    <ng-template #loadingContainer>
+      <p class="text-lightCyan">Loading...</p>
+    </ng-template>
+
+    <img src="../../../assets/pattern-divider-desktop.svg" />
+
+    <div
+      class="absolute bottom-[-27px] w-full left-0 flex items-center justify-center"
+    >
+      <button
+        [disabled]="isLoading"
+        (click)="getData()"
+        class="bg-neonGreen rounded-full p-4 hover:bg-white hover:scale-125 transition-all"
+      >
+        <img src="../../../assets/icon-dice.svg" class="m-0" alt="dice" />
+      </button>
+    </div>
+  </div>
+</div>
